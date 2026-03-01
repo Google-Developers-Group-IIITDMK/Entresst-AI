@@ -3,7 +3,8 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-// MongoDB connection string
+// MongoDB connection string - use direct connection for better reliability
+// Format: mongodb://username:password@host:port/database
 const MONGO_URI = process.env.MONGO_URI || 'mongodb+srv://rachamadgu19_db_user:BLxr1sCB23oKSsa7-pass@cluster.mongodb.net/entresst?retryWrites=true&w=majority';
 const MONGO_DB_NAME = process.env.MONGO_DB_NAME || 'entresst';
 

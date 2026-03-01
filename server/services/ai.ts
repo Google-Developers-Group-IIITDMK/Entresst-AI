@@ -66,22 +66,43 @@ export interface AIResponse {
 }
 
 export class AIService {
-  // Gemini API - Using gemini-1.5-flash (valid model)
+  // Gemini API - Using gemini-2.0-flash-exp (latest available model)
   static async geminiGenerate(prompt: string): Promise<AIResponse> {
-    try {
-      const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
-      const result = await model.generateContent(prompt);
-      const response = result.response;
-      const text = response.text();
-      
-      return {
-        provider: 'gemini',
-        response: text
-      };
-    } catch (error) {
-      console.error('Gemini API Error:', error);
-      throw new Error(`Gemini API error: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    if (!GEMINI_API_KEY) {
+      throw new Error('GEMINI_API_KEY is not configured. Please add it to your .env file.');
     }
+    
+    // Try different models in order of preference
+    const models = ['gemini-2.0-flash-exp', 'gemini-1.5-flash-8b', 'gemini-1.5-flash', 'gemini-pro'];
+    
+    for (const modelName of models) {
+      try {
+        const model = genAI.getGenerativeModel({ model: modelName });
+        const result = await model.generateContent(prompt);
+        const response = result.response;
+        const text = response.text();
+        
+        if (!text || text.trim() === '') {
+          continue; // Try next model
+        }
+        
+        return {
+          provider: 'gemini',
+          response: text,
+          model: modelName
+        };
+      } catch (error: any) {
+        // If model not found, try next one
+        if (error?.message?.includes('not found') || error?.message?.includes('not supported')) {
+          console.log(`Model ${modelName} not available, trying next...`);
+          continue;
+        }
+        // For other errors, throw immediately
+        throw error;
+      }
+    }
+    
+    throw new Error('No available Gemini models could process your request. Please check your API key.');
   }
 
   // OpenAI API - Using gpt-4o for better performance

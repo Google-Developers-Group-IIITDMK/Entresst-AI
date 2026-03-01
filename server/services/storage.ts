@@ -298,6 +298,8 @@ export class MongoDBStorageService implements StorageService {
 // Default storage service - Priority: MongoDB > Supabase > Firebase > In-memory
 let storageService: StorageService;
 let mongoConnected = false;
+let connectionAttempts = 0;
+const MAX_CONNECTION_ATTEMPTS = 3;
 
 // In-memory storage fallback
 const memoryStore = new Map<string, any[]>();
@@ -344,16 +346,19 @@ const memoryStorageService: StorageService = {
 };
 
 async function initializeStorageService(): Promise<StorageService> {
-  // Try MongoDB first (primary database)
+  // Try MongoDB first (primary database) - with better error handling
   if (isMongoDBConfigured) {
     try {
+      console.log('Attempting to connect to MongoDB...');
       await connectToMongoDB();
-      mongoConnected = true;
-      console.log('Using MongoDB as primary storage');
+      console.log('MongoDB connection successful');
       return new MongoDBStorageService();
     } catch (error) {
       console.error('MongoDB connection failed, falling back to other options:', error);
+      // Continue to next option
     }
+  } else {
+    console.log('MongoDB not configured in environment variables');
   }
 
   // Try Supabase second - but verify tables exist
@@ -370,6 +375,8 @@ async function initializeStorageService(): Promise<StorageService> {
     } catch (supabaseError) {
       console.warn('Supabase connection test failed, falling back to in-memory:', supabaseError);
     }
+  } else {
+    console.log('Supabase not configured');
   }
 
   // Try Firebase third
