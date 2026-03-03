@@ -58,6 +58,7 @@ export const EMBEDDING_MODELS = {
 export interface AIResponse {
   provider: 'gemini' | 'openai' | 'huggingface';
   response: string;
+  model?: string;
   usage?: {
     prompt_tokens?: number;
     completion_tokens?: number;
