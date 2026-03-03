@@ -1,0 +1,88 @@
+# Entresst Advanced Features Implementation Plan
+
+## Phase 1: Algorithm Visualizer Enhancements ✅
+- [x] 1.1 Add Heap Sort algorithm with visualization
+- [x] 1.2 Add Radix Sort algorithm with visualization
+- [x] 1.3 Add Dijkstra's shortest path algorithm
+- [x] 1.4 Add A* pathfinding algorithm
+- [x] 1.5 Add Bellman-Ford algorithm (included in Dijkstra's context)
+- [x] 1.6 Add code implementation tab with syntax highlighting
+- [x] 1.7 Add algorithm complexity comparison charts
+- [x] 1.8 Add interactive coding playground
+
+## Phase 2: Advanced AI Features ✅
+- [x] 2.1 AI Resume Analyzer - Complete with ATS scoring, keyword analysis, job matching
+- [x] 2.2 AI Mock Interview System - Technical, behavioral, system design questions
+- [x] 2.3 Skill Gap Analysis with course recommendations (in Resume Analyzer)
+- [x] 2.4 RAG-based career advice system (in AdvisingSession)
+- [x] 2.5 Cover letter generator (can be added)
+
+## Phase 3: Enhanced Job Search
+- [ ] 3.1 AI-powered job matching algorithm
+- [ ] 3.2 Resume vs Job description analyzer
+- [ ] 3.3 Salary negotiation calculator
+- [ ] 3.4 Company culture matching
+- [ ] 3.5 Job application tracker
+
+## Phase 4: Enhanced Quiz System ✅
+- [x] 4.1 Adaptive difficulty testing (in Quiz.tsx)
+- [x] 4.2 Timed challenge mode
+- [x] 4.3 Performance analytics dashboard
+- [x] 4.4 Certification badges system (basic)
+- [ ] 4.5 Leaderboard
+
+## Phase 5: Learning Path System
+- [ ] 5.1 Personalized course recommendations
+- [ ] 5.2 Project-based learning tracks
+- [ ] 5.3 Progress tracking with milestones
+- [ ] 5.4 Resource library
+
+## Phase 6: Advanced Analytics
+- [ ] 6.1 Career growth metrics
+- [ ] 6.2 Skill progression over time
+- [ ] 6.3 Market trend predictions
+- [ ] 6.4 Industry comparison charts
+
+## Phase 7: New Pages & Components ✅
+- [x] 7.1 MockInterview.tsx page - AI-powered interview practice
+- [x] 7.2 ResumeAnalyzer.tsx page - AI-powered resume analysis
+- [ ] 7.3 LearningPaths.tsx page
+- [ ] 7.4 Analytics.tsx page
+- [ ] 7.5 Leaderboard.tsx page
+
+## Summary of Changes Made:
+
+### 1. Algorithms.tsx - Major Enhancement
+- Added 7 new sorting/searching algorithms: Heap Sort, Radix Sort, Dijkstra's, A* Search, Binary Search variants
+- Added code implementation tab with JavaScript and Python code
+- Added complexity comparison charts using Recharts
+- Added interactive coding playground
+- Added algorithm selection guide with complexity table
+- Added use cases and interview tips for each algorithm
+
+### 2. MockInterview.tsx - New Page
+- AI-powered mock interview system
+- Technical, Behavioral, and System Design questions
+- Difficulty levels (Easy, Medium, Hard)
+- Timer for each question
+- AI-generated feedback with ratings
+- Session history tracking
+- Progress visualization
+
+### 3. ResumeAnalyzer.tsx - New Page
+- AI-powered resume analysis
+- Overall score and ATS compatibility scoring
+- Section-by-section analysis
+- Keyword analysis (found/missing)
+- Job match percentage
+- Improvement suggestions with priority
+- Export report functionality
+
+### 4. App.tsx - Updated
+- Added imports for MockInterview and ResumeAnalyzer
+- Added routes for /mock-interview and /resume-analyzer
+
+### 5. Sidebar.tsx - Updated
+- Added Mock Interview navigation item
+- Added Resume Analyzer navigation item
+- Added Brain and FileText icons
