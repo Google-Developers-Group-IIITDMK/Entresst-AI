@@ -1,5 +1,11 @@
 # Entresst-AI
 
+[![GitHub Contributors](https://img.shields.io/github/contributors/srakshitha0802/Entresst-AI-)](https://github.com/srakshitha0802/Entresst-AI-/graphs/contributors)
+[![GitHub Last Commit](https://img.shields.io/github/last-commit/srakshitha0802/Entresst-AI-)](https://github.com/srakshitha0802/Entresst-AI-/commits/main)
+
+**Lead Developer:** srakshitha0802  
+**Contributors:** lakshmijahnavik
+
 A comprehensive full-stack AI-powered career development platform that helps users track their skills, prepare for interviews, explore job opportunities, and accelerate their career growth.
 
 ![Entresst Logo](Entresst%20Logo.jpeg)
